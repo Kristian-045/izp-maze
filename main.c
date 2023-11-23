@@ -409,9 +409,11 @@ int main(int argc, char *argv[]) {
             return 0;
         } else if (isFileValid == -2) {
             printf("Memory allocation failed\n");
+            return -1;
         }
         if (!areBordersValid(&map)) {
             invalidPrint();
+            freeMap(&map);
             return 0;
         }
         validPrint();
