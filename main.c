@@ -382,7 +382,6 @@ bool isCellOutOfMaze(Map *map, int r, int c) {
 }
 
 int main(int argc, char *argv[]) {
-    bool isValid = 1;
     Map map;
     char *path = NULL;
     int row = -1;
