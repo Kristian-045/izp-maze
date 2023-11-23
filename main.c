@@ -16,7 +16,9 @@ typedef struct {
 } Map;
 
 void freeMap(Map *map) {
-    free(map->cells);
+    if(map->cells!=NULL){
+        free(map->cells);
+    }
 }
 
 void helpPrint() {
@@ -405,11 +407,10 @@ int main(int argc, char *argv[]) {
         int isFileValid = readFile(path, &map);
         if (isFileValid == -1) {
             invalidPrint();
-            freeMap(&map);
+//            freeMap(&map);
             return 0;
         } else if (isFileValid == -2) {
             printf("Memory allocation failed\n");
-            return -1;
         }
         if (!areBordersValid(&map)) {
             invalidPrint();
