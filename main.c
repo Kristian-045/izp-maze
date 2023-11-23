@@ -351,12 +351,13 @@ int nextCellMove(Map *map, int r, int c, int leftRight, int fromBorder) {
 int nextStep(Map *map, int *r, int *c, int leftRight, int fromBorder) {
     int nextBorder = nextCellMove(map, *r, *c, leftRight, fromBorder);
     //try to get back out
-    if (nextBorder == -1) {
+    if (nextBorder == -1 || nextBorder==-2) {
 //        printf("from border %d\n", fromBorder);
 //        printf("next border %d\n", nextBorder);
         nextBorder = fromBorder;
     }
 //    printf("next border %d\n", nextBorder);
+//    printf("-----------------------\n");
     if (nextBorder == LEFT) {
         (*c)--;
     }
@@ -442,10 +443,7 @@ int main(int argc, char *argv[]) {
 
         int startBorder = start_border(&map, row, column, leftRight);
 
-        if (startBorder == -1) {
-            printf("%d,%d\n",row,column);
-            return 0;
-        }
+
         if (startBorder==-10){
             invalidPrint();
             return -1;
