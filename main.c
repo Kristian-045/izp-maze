@@ -292,22 +292,23 @@ int start_border(Map *map, int r, int c, int leftRight) {
     //enter from left
     if (c == 1) {
         int result = stepFromLeft(map, r, c, rpath);
-        if (result != -2) return result;
+        if (result != -2) return RIGHT;
     }
     //enter from right
     if (c == map->cols) {
         int result = stepFromRight(map, r, c, rpath);
-        if (result != -2) return result;
+
+        if (result != -2) return LEFT;
     }
     //enter from top
     if (r == 1 && c % 2 == 1) {
         int result = stepFromTop(map, r, c, rpath);
-        if (result != -2) return result;
+        if (result != -2) return BOTTOM;
     }
     //enter from bottom
     if (r == map->cols && r + c % 2 == 1) {
         int result = stepFromBottom(map, r, c, rpath);
-        if (result != -2) return result;
+        if (result != -2) return TOP;
     }
 
     return -10;
