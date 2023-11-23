@@ -442,7 +442,7 @@ int main(int argc, char *argv[]) {
         int startBorder = start_border(&map, row, column, leftRight);
 
         if (startBorder == -1) {
-            printf("%d,%d",row,column);
+            printf("%d,%d\n",row,column);
             return 0;
         }
         if (startBorder==-10){
