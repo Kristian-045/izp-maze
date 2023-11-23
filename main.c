@@ -310,7 +310,7 @@ int start_border(Map *map, int r, int c, int leftRight) {
         if (result != -2) return result;
     }
 
-    return -1;
+    return -10;
 }
 
 int getInverseBorder(int border) {
@@ -419,7 +419,8 @@ int main(int argc, char *argv[]) {
         }
         validPrint();
         freeMap(&map);
-    } else if (argumentsValue == 2 || argumentsValue == 3) {
+    }
+    else if (argumentsValue == 2 || argumentsValue == 3) {
         int leftRight = argumentsValue == 2 ? RIGHT : LEFT;
 
         path = (char *) argv[4];
@@ -439,9 +440,14 @@ int main(int argc, char *argv[]) {
 //        printMap(&map);
 
         int startBorder = start_border(&map, row, column, leftRight);
+
         if (startBorder == -1) {
-            invalidPrint();
+            printf("%d,%d",row,column);
             return 0;
+        }
+        if (startBorder==-10){
+            invalidPrint();
+            return -1;
         }
         int fromBorder = getInverseBorder(startBorder);
         int toBorder = -1;
@@ -484,8 +490,6 @@ int main(int argc, char *argv[]) {
     }
 
 
-//    printf("row:%d col:%d\n", row, column);
-//    printf("filename:%s\n", argv[4]);
-//    printf("filename:%s\n", path);
+
     return 0;
 }
