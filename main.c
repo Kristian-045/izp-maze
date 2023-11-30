@@ -118,12 +118,12 @@ int readFile(const char *filename, Map *map) {
         }
     }
     //smrcka we don't need to check other values
-  /*  int extraValue;
-    if (fscanf(file, "%d", &extraValue) != EOF) {
-        freeMap(map);
-        fclose(file);
-        return -1;
-    }*/
+    /*  int extraValue;
+      if (fscanf(file, "%d", &extraValue) != EOF) {
+          freeMap(map);
+          fclose(file);
+          return -1;
+      }*/
 
     fclose(file);
     return 0;
@@ -375,7 +375,7 @@ int main(int argc, char *argv[]) {
             invalidPrint();
             return 0;
         } else if (isFileValid == -2) {
-            printf("Memory allocation failed\n");
+            fprintf(stderr,"Memory allocation failed\n");
         }
         if (!areBordersValid(&map)) {
             invalidPrint();
@@ -393,7 +393,7 @@ int main(int argc, char *argv[]) {
             invalidPrint();
             return 0;
         } else if (isFileValid == -2) {
-            printf("Memory allocation failed\n");
+            fprintf(stderr ,"Memory allocation failed\n");
         }
         if (!areBordersValid(&map)) {
             invalidPrint();
