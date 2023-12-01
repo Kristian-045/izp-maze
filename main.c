@@ -104,6 +104,9 @@ int readFile(const char *filename, Map *map) {
         fclose(file);
         return -1;
     }
+    if(map->rows<1 || map->cols<1){
+        return -1;
+    }
 
     map->cells = (unsigned char *) malloc(map->rows * map->cols * sizeof(unsigned char));
     if (map->cells == NULL) {
